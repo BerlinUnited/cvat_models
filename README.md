@@ -1,1 +1,1 @@
-# cvat_models
+# CVAT Models
