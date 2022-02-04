@@ -36,7 +36,7 @@ spec:
           value: /opt/nuclio
       postCopy:
         - kind: RUN
-          value: curl https://www2.informatik.hu-berlin.de/~naoth/ressources/ball_model_final.pth --output model_final.pth
+          value: curl https://models.naoth.de/ball_model_final.pth --output model_final.pth
 
   triggers:
     myHttpTrigger:
@@ -45,9 +45,12 @@ spec:
       workerAvailabilityTimeoutMilliseconds: 10000
       attributes:
         maxRequestBodySize: 33554432 # 32MB
+        port: 32002
 
   platform:
     attributes:
       restartPolicy:
         name: always
         maximumRetryCount: 3
+      mountMode: volume
+      network: cvat-repo_cvat
